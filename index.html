@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Tools Performance Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Build Tools Performance Dashboard -->
+        <section class="chart-section hero-chart">
+            <div class="section-header">
+                <h1 class="main-title">Build Tools Performance Frontier</h1>
+                <p class="section-description">Explore the trade-offs between build speed and bundle size across different metrics</p>
+                <div class="chart-controls">
+                    <select id="paretoXAxis" class="control-select">
+                        <option value="devColdStart">Dev Cold Start</option>
+                        <option value="prodBuild" selected>Production Build</option>
+                        <option value="rootHMR">Root HMR</option>
+                        <option value="leafHMR">Leaf HMR</option>
+                        <option value="totalSize">Total Size</option>
+                        <option value="gzippedSize">Gzipped Size</option>
+                    </select>
+                    <select id="paretoYAxis" class="control-select">
+                        <option value="devColdStart">Dev Cold Start</option>
+                        <option value="prodBuild">Production Build</option>
+                        <option value="rootHMR">Root HMR</option>
+                        <option value="leafHMR">Leaf HMR</option>
+                        <option value="totalSize" selected>Total Size</option>
+                        <option value="gzippedSize">Gzipped Size</option>
+                    </select>
+                    <label class="checkbox-control">
+                        <input type="checkbox" id="normalizedScores" checked>
+                        <span class="checkmark"></span>
+                        Show normalized scores (higher is better)
+                    </label>
+
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="paretoChart"></canvas>
+            </div>
+            <div class="chart-description">
+                <p>This interactive scatter plot shows the performance trade-offs between different JavaScript build tools. Each point represents a build tool's performance on the selected metrics. Tools closer to the top-right corner offer better performance on both axes. Use the controls above to compare different performance dimensions like build speed vs. bundle size.</p>
+                
+                <div class="score-explanation">
+                    <h3>How Scores Are Calculated</h3>
+                    <div class="score-details">
+                        <div class="score-type">
+                            <h4>Speed Scores</h4>
+                            <p><strong>Dev Cold Start, Root HMR, Leaf HMR, Production Build</strong></p>
+                            <p>Formula: <code>(Max Time - Tool Time) / Max Time</code></p>
+                            <p>Faster tools get higher scores (0-1 scale, 1 = fastest)</p>
+                        </div>
+                        <div class="score-type">
+                            <h4>Size Scores</h4>
+                            <p><strong>Total Size, Gzipped Size</strong></p>
+                            <p>Formula: <code>(Max Size - Tool Size) / Max Size</code></p>
+                            <p>Smaller bundles get higher scores (0-1 scale, 1 = smallest)</p>
+                        </div>
+                    </div>
+                    <p class="score-note"><strong>Note:</strong> Scores are normalized relative to the maximum value in each test case, making it easy to compare tools across different performance dimensions.</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Detailed Results -->
+        <section class="results-section">
+            <div class="section-header">
+                <h2 class="section-title">Detailed Results</h2>
+                <p class="section-description">Complete performance breakdown by test case</p>
+            </div>
+            <div class="results-tabs">
+                <button class="tab-button active" data-case="react-1k">React 1K</button>
+                <button class="tab-button" data-case="react-5k">React 5K</button>
+                <button class="tab-button" data-case="react-10k">React 10K</button>
+                <button class="tab-button" data-case="ui-components">UI Components</button>
+                <button class="tab-button" data-case="rome">Rome</button>
+            </div>
+            <div class="results-content">
+                <div id="resultsTable"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Build Tools Performance Dashboard</p>
+                <p>Data from <a href="https://github.com/rspack-contrib/build-tools-performance">build-tools-performance</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
