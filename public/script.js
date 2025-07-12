@@ -38,8 +38,8 @@ function initializeParetoChart() {
     if (isScoreBased) {
         // For score-based metrics, set fixed range 0-1 with padding
         axisRanges = {
-            x: { min: -0.05, max: 1.05 },  // 5% padding on each side
-            y: { min: -0.05 }
+            x: { max: 1.05 },  // 5% padding on each side
+            y: { min: -0.01 }
         };
     } else {
         axisRanges = dataUtils.getAxisRanges(xAxis, yAxis, normalized);
@@ -259,8 +259,8 @@ function updateParetoChart() {
     if (isScoreBased) {
         // For score-based metrics, set fixed range 0-1 with padding
         axisRanges = {
-            x: { min: -0.05, max: 1.05 },  // 5% padding on each side
-            y: { min: -0.05, max: 1.05 }
+            x: { max: 1.05 },  // 5% padding on each side
+            y: { min: -0.01 }
         };
     } else {
         axisRanges = dataUtils.getAxisRanges(xAxis, yAxis, normalized);
