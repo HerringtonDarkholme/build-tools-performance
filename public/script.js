@@ -448,30 +448,11 @@ function resetChartHighlight() {
 function toggleToolVisibility(toolKey) {
     if (!paretoChart) return;
 
-    // Check if all tools are currently visible
-    const allToolsVisible = hiddenTools.size === 0;
-
-    if (allToolsVisible) {
-        // Hide all tools except the clicked one
-        for (const dataset of paretoChart.data.datasets) {
-            if (dataset.toolKey !== toolKey) {
-                hiddenTools.add(dataset.toolKey);
-            }
-        }
+    // Simply toggle visibility of the clicked tool
+    if (hiddenTools.has(toolKey)) {
+        hiddenTools.delete(toolKey);
     } else {
-        // Toggle visibility of the clicked tool
-        if (hiddenTools.has(toolKey)) {
-            hiddenTools.delete(toolKey);
-        } else {
-            hiddenTools.add(toolKey);
-        }
-
-        // Check if all tools would be hidden after this toggle
-        const totalTools = paretoChart.data.datasets.length;
-        if (hiddenTools.size >= totalTools) {
-            // Show all tools instead of hiding all
-            hiddenTools.clear();
-        }
+        hiddenTools.add(toolKey);
     }
 
     // Update chart appearance
