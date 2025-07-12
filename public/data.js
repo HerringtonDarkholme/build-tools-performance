@@ -4,49 +4,49 @@ const performanceData = {
     'rspack': {
       name: 'Rspack CLI',
       version: '1.4.6',
-      color: '#3B82F6', // Blue - swapped with Rsbuild
+      color: '#3B82F6', // Bright blue
       icon: '⚡'
     },
     'rspack-lazy': {
       name: 'Rspack CLI (Lazy)',
       version: '1.4.6',
-      color: '#60A5FA', // Lighter blue variant - swapped with Rsbuild Lazy
+      color: '#8B5CF6', // Purple
       icon: '🚀'
     },
     'rsbuild': {
       name: 'Rsbuild',
       version: '1.4.6',
-      color: '#FF6B35', // Orange - swapped with Rspack CLI
+      color: '#EF4444', // Red
       icon: '🏗️'
     },
     'rsbuild-lazy': {
       name: 'Rsbuild (Lazy)',
       version: '1.4.6',
-      color: '#FF8C42', // Lighter orange variant - swapped with Rspack CLI Lazy
+      color: '#F97316', // Orange
       icon: '🎯'
     },
     'vite-rolldown': {
       name: 'Vite (Rolldown + Oxc)',
       version: '7.0.7',
-      color: '#646CFF', // Vite brand purple
+      color: '#10B981', // Green
       icon: '⚡'
     },
     'vite-rollup': {
       name: 'Vite (Rollup + SWC)',
       version: '7.0.4',
-      color: '#646CFF', // Vite brand purple
+      color: '#06B6D4', // Cyan
       icon: '🔄'
     },
     'webpack': {
       name: 'webpack (SWC)',
       version: '5.100.0',
-      color: '#8DD6F9', // Webpack brand blue (Malibu)
+      color: '#F59E0B', // Yellow/amber
       icon: '📦'
     },
     'rolldown': {
       name: 'Rolldown',
       version: '1.0.0-beta.25',
-      color: '#B45309', // Rust/amber color - represents Rust language
+      color: '#EC4899', // Pink
       icon: '🎲'
     }
   },
